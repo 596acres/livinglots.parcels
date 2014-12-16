@@ -1,0 +1,24 @@
+{
+  "name": "livinglots.parcels",
+  "version": "0.1.0",
+  "description": "Living Lots parcels",
+  "main": "src/index.js",
+  "dependencies": {
+    "leaflet": "~0.7.3",
+    "leaflet-tilelayer-vector": "git://github.com/ebrelsford/leaflet-tilelayer-vector"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/596acres/livinglots.parcels.git"
+  },
+  "author": "Eric Brelsford",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/596acres/livinglots.parcels/issues"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-jshint": "^0.10.0"
+  }
+}
