@@ -1,6 +1,6 @@
 {
   "name": "livinglots.parcels",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Living Lots parcels",
   "main": "src/index.js",
   "dependencies": {
