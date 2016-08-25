@@ -4,7 +4,7 @@
 
 var L = require('leaflet');
 
-require('leaflet-tilelayer-vector');
+require('leaflet-geojson-gridlayer');
 
 
 var map,
@@ -20,12 +20,12 @@ var map,
 
 var ParcelsMixin = {
     parcelLayerOptions: {
+        minZoom: 17,
+
         onEachFeature: function (feature, layer) {
             layer.on({
-                'click': function (event) {
-                    var map = this._map,
-                        layer = event.layer,
-                        feature = event.target.feature;
+                click: function (event) {
+                    var map = this._map;
                     if (selectedParcel && selectedParcel.id === feature.id) {
                         selectedParcel = null;
                         layer.setStyle(parcelDefaultStyle);
@@ -48,9 +48,7 @@ var ParcelsMixin = {
                     }
                 },
 
-                'mouseover': function (event) {
-                    var layer = event.layer,
-                        feature = event.target.feature;
+                mouseover: function (event) {
                     $('.map-add-lot-current-parcel').text(feature.properties.address);
                     this._map.fire('parcels.mouseover', { layer: layer, feature: feature });
                 }
@@ -82,18 +80,12 @@ var ParcelsMixin = {
             this.removeLayer(parcelsLayer);
         }
         var url = this.options.parcelsUrl;
-
-        var options = {
-            layerFactory: L.geoJson,
-            minZoom: 17,
-            serverZooms: [17],
-            unique: function (feature) {
-                return feature.id;
-            }
-        };
-
-        var layerOptions = L.Util.extend({}, this.parcelLayerOptions);
-        parcelsLayer = new L.TileLayer.Vector(url, options, layerOptions);
+        parcelsLayer = L.geoJsonGridLayer(url, {
+            layers: {
+                default: this.parcelLayerOptions
+            },
+            minZoom: 17
+        });
         this.addLayer(parcelsLayer);
     }
 
