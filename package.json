@@ -4,7 +4,7 @@
   "description": "Living Lots parcels",
   "main": "src/index.js",
   "dependencies": {
-    "leaflet-geojson-gridlayer": "git://github.com/ebrelsford/leaflet-geojson-gridlayer"
+    "leaflet-geojson-gridlayer": "git+https://github.com/ebrelsford/leaflet-geojson-gridlayer"
   },
   "repository": {
     "type": "git",
